@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> <!-- donne une bibliothèque bootstrap utile pour la réalisation de page web et ici utile pour la responsive-->
+	<title>Task List 2021</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="image/icone de page.png"> <!-- icon en haut de l'onglet-->
+
+	<link rel="stylesheet" href="style.css" /> 
+</head>
+<body>
+    <!-- <video autoplay loop muted> --> 
+        <!-- <source src="video/waves.mp4"> -->
+    <!-- </video> -->
+    <!-- Teste d'une vidéo en arrière fond qui a échoué (le css à été retiré pour pas alourdir)-->
+    <label for="darkorlight"> 
+        <input type="checkbox" id="darkorlight" name="darkorlight" onclick="darkOrlight()"> <!-- bouton darkmode -->
+        <span class="check"></span>
+    </label>
+    <div class="row mx-4 my-4"> <!-- première ligne-->
+	    <div class="col-lg-2 col-md-4 col-12"> <!-- colonne de gauche -->
+            <div class="card text-center border-secondary mb-3">
+                <div class="sticky-sm-top">
+	    	        <form id="new-task-form" id="form-Task">
+                        <div class="card-header">
+                            TO DO LIST
+                        </div>
+                        <div class="form-group"> <!-- première chose demandée: Task-->
+	    	        	    <input 
+	    	        	    	type="text" 
+                                class="form-control"
+                                autocomplete="off"
+                                maxlength="50"
+	    	        	    	name="new-task-input1" 
+	    	        	    	id="new-task-input1" 
+	    	        	    	placeholder="Task?" 
+                                required/> <!-- required empêche la task d'être envoyé avant que tout soit rempli-->
+                        </div>
+                        <div class="form-group"> <!-- deuxième chose demandée: Who-->
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                autocomplete="off"
+                                maxlength="50"
+                                name="new-task-input2" 
+                                id="new-task-input2" 
+                                placeholder="Who?" 
+                                required/>
+                            </div>
+                            <div class="form-group"> <!-- troisième chose demandée: Description -->
+                                <textarea 
+                                id="description" 
+                                cols="30" 
+                                name="new-task-input3" 
+                                id="new-task-input3" 
+                                rows="10" 
+                                class="form-control" 
+                                maxlength="500" 
+                                autocomplete="off"
+                                placeholder="Description" 
+                                required></textarea>
+                            </div>
+                            <select id="cat">
+                                <!-- <optgroup label="Category" > -->
+                                  <option value="todo">TO DO</option>
+                                  <option value="ongoing">ONGOING</option>
+                                  <option value="done">DONE</option>
+                                <!-- </optgroup> -->
+                            </select>
+	    	        	<input
+	    	        		type="submit"
+	    	        		id="new-task-submit" 
+	    	        		value="Add task" /> <!-- ADD -->
+	    	        </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-8 col-12"> <!-- colonne de droite -->
+            <div class="droptarget"> <!-- drop target (qui ne marche pas explication dans le javascript ligne 66)-->
+                <div class="card-group">
+                    <div class="col-lg-4">
+                        <div class="card text-center border-secondary mb-3">
+                            <div class="card-body">
+                                <div class="stylecard">
+                                    <h3 class="card-title">TO DO</h3>
+                                    <p class="card-text">Here you can see what we have to do.</p>
+                                </div>
+                            </div>
+                        </div>
+		                <div class="task-list" ondragover="return over(event)" ondrop="return drop(event)">
+                            <div id="tasks1" draggable="true"> <!-- Ici on retrouvera les prochaines TASK TO DO-->
+                            
+                                <!--
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="task">
+                                                    <div class="content">
+                                                        <h4>TASK</h4>
+                                                    <input 
+                                                        type="text" 
+                                                        class="text" 
+                                                        value="TASK"
+                                                        readonly>
+                                                        <h4>WHO</h4>
+                                                    <input 
+                                                        type="text" 
+                                                        class="text" 
+                                                        value="WHO"
+                                                        readonly>
+                                                        <h4>DESCRIPTION</h4>
+                                                    <textarea 
+                                                        type="text" 
+                                                        class="text" 
+                                                        value="Description"
+                                                        readonly>
+                                                    </textarea>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <button class="edit">Edit</button>
+                                                        <button class="delete">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                -->
+                            
+                            </div>
+                        </div>       
+                    </div>
+                    <div class="col">
+                        <div class="card text-center border-secondary mb-3">
+                            <div class="card-body">
+                                <div class="stylecard">
+                                    <h3 class="card-title">ONGOING</h3>
+                                    <p class="card-text">Here you can see what we are doing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div ondragover="return over(event)" ondrop="return drop(event)">
+                            <div id="tasks2" draggable="true"> <!-- Ici on retrouvera les prochaines TASK ONGOING-->
+                            
+                                <!--
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="task">
+                                                    <div class="content">
+                                                        <input 
+                                                            type="text" 
+                                                            class="text" 
+                                                            value="TASK"
+                                                            readonly>
+                                                        <input 
+                                                            type="text" 
+                                                            class="text" 
+                                                            value="WHO"
+                                                            readonly>
+                                                        <textarea 
+                                                            type="text" 
+                                                            class="text" 
+                                                            value="Description"
+                                                            readonly>
+                                                        </textarea>
+                                                    </div>
+                                                
+                                                    <div class="actions">
+                                                        <button class="edit">Edit</button>
+                                                        <button class="delete">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                -->
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-center border-secondary mb-3">
+                            <div class="card-body">
+                                <div class="stylecard">
+                                    <h3 class="card-title">DONE</h3>
+                                    <p class="card-text">Here you can see what we have done.</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div ondragover="return over(event)" ondrop="return drop(event)">
+                            <div id="tasks3" draggable="true"> <!-- Ici on retrouvera les prochaines TASK DONE-->
+                            
+                                <!--
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="task">
+                                                    <div class="content">
+                                                        <input 
+                                                            type="text" 
+                                                            class="text" 
+                                                            value="TASK"
+                                                            readonly>
+                                                        <input 
+                                                            type="text" 
+                                                            class="text" 
+                                                            value="WHO"
+                                                            readonly>
+                                                        <textarea 
+                                                            type="text" 
+                                                            class="text" 
+                                                            value="Description"
+                                                            readonly>
+                                                        </textarea>
+                                                    </div>
+                                                    <div class="actions">
+                                                        <button class="edit">Edit</button>
+                                                        <button class="delete">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                -->
+                            
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script src="javascript.js"></script>
+</body>
+</html>        
