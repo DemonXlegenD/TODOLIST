@@ -23,7 +23,7 @@
 	    <div class="col-lg-2 col-md-4 col-12"> <!-- colonne de gauche -->
             <div class="card text-center border-secondary mb-3">
                 <div class="sticky-sm-top">
-	    	        <form id="new-task-form" id="form-Task">
+	    	        <form id="new-task-form" class="form-Task">
                         <div class="card-header">
                             TO DO LIST
                         </div>
@@ -36,7 +36,7 @@
 	    	        	    	name="new-task-input1" 
 	    	        	    	id="new-task-input1" 
 	    	        	    	placeholder="Task?" 
-                                required/> <!-- required empêche la task d'être envoyé avant que tout soit rempli-->
+                                required="true"/> <!-- required empêche la task d'être envoyé avant que tout soit rempli-->
                         </div>
                         <div class="form-group"> <!-- deuxième chose demandée: Who-->
                             <input 
@@ -47,11 +47,10 @@
                                 name="new-task-input2" 
                                 id="new-task-input2" 
                                 placeholder="Who?" 
-                                required/>
+                                required="true"/>
                             </div>
                             <div class="form-group"> <!-- troisième chose demandée: Description -->
                                 <textarea 
-                                id="description" 
                                 cols="30" 
                                 name="new-task-input3" 
                                 id="new-task-input3" 
@@ -60,7 +59,7 @@
                                 maxlength="500" 
                                 autocomplete="off"
                                 placeholder="Description" 
-                                required></textarea>
+                                required="true"></textarea>
                             </div>
                             <select id="cat">
                                 <!-- <optgroup label="Category" > -->
@@ -69,10 +68,7 @@
                                   <option value="done">DONE</option>
                                 <!-- </optgroup> -->
                             </select>
-	    	        	<input
-	    	        		type="submit"
-	    	        		id="new-task-submit" 
-	    	        		value="Add task" /> <!-- ADD -->
+                          <button type="submit" class="new-task-submit"><span class="text">Add Task</span></button> <!-- ADD -->
 	    	        </form>
                 </div>
             </div>
@@ -89,46 +85,8 @@
                                 </div>
                             </div>
                         </div>
-		                <div class="task-list" ondragover="return over(event)" ondrop="return drop(event)">
-                            <div id="tasks1" draggable="true"> <!-- Ici on retrouvera les prochaines TASK TO DO-->
-                            
-                                <!--
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="task">
-                                                    <div class="content">
-                                                        <h4>TASK</h4>
-                                                    <input 
-                                                        type="text" 
-                                                        class="text" 
-                                                        value="TASK"
-                                                        readonly>
-                                                        <h4>WHO</h4>
-                                                    <input 
-                                                        type="text" 
-                                                        class="text" 
-                                                        value="WHO"
-                                                        readonly>
-                                                        <h4>DESCRIPTION</h4>
-                                                    <textarea 
-                                                        type="text" 
-                                                        class="text" 
-                                                        value="Description"
-                                                        readonly>
-                                                    </textarea>
-                                                    </div>
-                                                    <div class="actions">
-                                                        <button class="edit">Edit</button>
-                                                        <button class="delete">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                -->
-                            
-                            </div>
+		                <div class="task-list" id="column-to-do">
+
                         </div>       
                     </div>
                     <div class="col">
@@ -141,44 +99,8 @@
                             </div>
                         </div>
                     
-                        <div ondragover="return over(event)" ondrop="return drop(event)">
-                            <div id="tasks2" draggable="true"> <!-- Ici on retrouvera les prochaines TASK ONGOING-->
-                            
-                                <!--
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="task">
-                                                    <div class="content">
-                                                        <input 
-                                                            type="text" 
-                                                            class="text" 
-                                                            value="TASK"
-                                                            readonly>
-                                                        <input 
-                                                            type="text" 
-                                                            class="text" 
-                                                            value="WHO"
-                                                            readonly>
-                                                        <textarea 
-                                                            type="text" 
-                                                            class="text" 
-                                                            value="Description"
-                                                            readonly>
-                                                        </textarea>
-                                                    </div>
-                                                
-                                                    <div class="actions">
-                                                        <button class="edit">Edit</button>
-                                                        <button class="delete">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                -->
-                            
-                            </div>
+                        <div class="task-list" id="column-on-going">
+                        
                         </div>
                     </div>
                     <div class="col">
@@ -190,44 +112,8 @@
                                 </div>
                             </div>
                         </div>
-                    
-                        <div ondragover="return over(event)" ondrop="return drop(event)">
-                            <div id="tasks3" draggable="true"> <!-- Ici on retrouvera les prochaines TASK DONE-->
-                            
-                                <!--
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="task">
-                                                    <div class="content">
-                                                        <input 
-                                                            type="text" 
-                                                            class="text" 
-                                                            value="TASK"
-                                                            readonly>
-                                                        <input 
-                                                            type="text" 
-                                                            class="text" 
-                                                            value="WHO"
-                                                            readonly>
-                                                        <textarea 
-                                                            type="text" 
-                                                            class="text" 
-                                                            value="Description"
-                                                            readonly>
-                                                        </textarea>
-                                                    </div>
-                                                    <div class="actions">
-                                                        <button class="edit">Edit</button>
-                                                        <button class="delete">Delete</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                -->
-                            
-                            </div>
+                        <div class="task-list" id="column-done">
+
                         </div>
                     </div> 
                 </div>

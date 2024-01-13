@@ -3,17 +3,16 @@
 :root {
 	--ecriture : black;
 	--background: whitesmoke;
-	--fond: url(../image/imagefond.jpg);
+	--fond: rgb(240, 240, 240);
 }
 
 
 body{
-    background: var(--fond);
-
+    background-color: var(--fond);
 }
 
 .light-mode{
-    background: var(--fond);
+    background-color: var(--fond);
 }
 
 
@@ -99,7 +98,14 @@ progress::-webkit-progress-value {
 
 
 /*BOUTONS*/
-
+.form-Task{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.text{
+    width: 100%;
+}
 input, button {
 	border:0.01em;
     background-color: var(--background);
@@ -126,24 +132,48 @@ textarea, button {
 }
 
 /*BOUTON ADD*/
-#new-task-submit {
-	color: var(--pink);
-	font-size: 1.25rem;
-	font-weight: 700;
-	background-image: linear-gradient(to right, pink, purple);
-	--webkit-background-clip: text;
-	--webkit-text-fill-color: transparent;
-	cursor: pointer;
-	transition: 0.4s;
+.new-task-submit {
+    align-items: center;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    border: 0;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+  
+    padding: 3px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
-#new-task-submit:hover {
-	opacity: 0.8;
+
+.new-task-submit:active,
+.new-task-submit:hover {
+  outline: 0;
 }
 
-#new-task-submit:active {
-	opacity: 0.6;
-}
+.new-task-submit span {
+    background-color: rgb(5, 6, 45);
+    padding: 16px 24px;
+    border-radius: 6px;
+    width: 100%;
+    transition: 300ms;
+  }
+
+.new-task-submit:hover span {
+    background: none;
+  }
 
 /*TASK ACTIONS BUTTON DELETE AND EDIT*/
 
@@ -184,6 +214,13 @@ textarea, button {
 }
 
 
+.task-list{
+    min-height: 400px;
+}
+
+.dragging{
+    opacity: 0.5;
+}
 
 /*CARD*/
 
@@ -236,7 +273,6 @@ select{
 
 .stylecard {
     font-family: fantasy;
-    font-style: italic;
 }
 
 /*TITRE 4*/
